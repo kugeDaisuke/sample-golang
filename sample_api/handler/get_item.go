@@ -22,5 +22,4 @@ func GetItem(c echo.Context) error {
 	}
 
 	return c.String(http.StatusOK, item.Name)
-
 }
