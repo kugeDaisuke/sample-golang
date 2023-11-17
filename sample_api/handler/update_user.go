@@ -22,6 +22,7 @@ func UpdateUser(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err)
 	}
 
+	// データベースに接続
 	dbInstance := db.GetDB()
 
 	// 変数userにリクエストデータを格納
@@ -31,6 +32,8 @@ func UpdateUser(c echo.Context) error {
 		Email: req.Email,
 		Pass:  req.Pass,
 	}
+
+	// データベース更新と例外処理
 	if err := dbInstance.Model(&user).Where("id=?", 1).Updates(entity.User{Name: user.Name, Email: user.Email, Pass: user.Pass}).Error; err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err)
 	}
