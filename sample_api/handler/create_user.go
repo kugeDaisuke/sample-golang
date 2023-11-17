@@ -10,6 +10,7 @@ import (
 
 type CreateUserRequest struct {
 	Name  string `json:"Name"`
+	Age   int    `json:"Age"`
 	Email string `json:"Email"`
 	Pass  string `json:"Pass"`
 }
@@ -28,6 +29,7 @@ func CreateUser(c echo.Context) error {
 	user := entity.User{
 		ID:    0, // Userはautoincrementを指定しているため、自動的にIDが振られます
 		Name:  req.Name,
+		Age:   req.Age,
 		Email: req.Email,
 		Pass:  req.Pass,
 	}

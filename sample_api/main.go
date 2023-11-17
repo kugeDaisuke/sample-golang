@@ -67,5 +67,6 @@ func initDB() {
 	dbInstance := db.GetDB()
 	dbInstance.AutoMigrate(
 		&entity.Item{},
+		&entity.User{},
 	)
 }
